@@ -1,0 +1,4 @@
+services:
+#    lb_composer_check.example:
+#        class: LeoBenelli\LBComposerCheckBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
