@@ -1,7 +1,7 @@
 ComposerCheckBundle
 ==========================
 
-Symfony Bundle to check Version alignment with the latest Bundle versions.
+Symfony Bundle to check Version alignment (via Composer) with the latest Bundle versions.
 
 It's in development, it will be ready soon.
 

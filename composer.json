@@ -1,0 +1,24 @@
+{
+    "name": "leobenelli/composercheckbundleversion",
+    "type": "library",
+    "description": "Symfony Bundle to check Version alignment (via Composer) with the latest Bundle versions.",
+    "keywords": ["composer","show","bundles","symfony"],
+    "homepage": "https://github.com/leobenelli/ComposerCheckBundle",
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "Leonardo Benelli",
+            "email": "leobenelli@gmail.com",
+            "homepage": "http://inforleo.leofede.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-0": {
+            "": ""
+        }
+    }
+}
