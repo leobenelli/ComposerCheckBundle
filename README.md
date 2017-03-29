@@ -15,7 +15,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require ... (in develpment. It will be soon)
+$ composer require leobenelli/composercheckbundle (Still in develpment. It will be ready soon)
 ```
 
 This command requires you to have Composer installed globally, as explained
