@@ -1,5 +1,5 @@
 {
-    "name": "leobenelli/composercheckbundleversion",
+    "name": "leobenelli/composercheckbundle",
     "type": "library",
     "description": "Symfony Bundle to check Version alignment (via Composer) with the latest Bundle versions.",
     "keywords": ["composer","show","bundles","symfony"],
