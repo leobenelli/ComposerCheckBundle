@@ -76,7 +76,7 @@ $process->run(function ($type, $buffer) {
        // return $this->render('LBComposerCheckBundle:Default:index.html.twig');
         
         return $this->render('LBComposerCheckBundle:Default:index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+//            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'packages' => $installedPackages,
         ]);
           
