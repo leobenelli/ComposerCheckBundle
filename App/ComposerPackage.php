@@ -6,11 +6,11 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
- * Description of PackageLeo
+ * Oggetto Package 
  *
  * @author benelli
  */
-class PackageLeo {
+class ComposerPackage {
 
     private $name;
     private $version;

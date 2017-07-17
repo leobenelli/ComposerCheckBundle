@@ -5,78 +5,34 @@ namespace LeoBenelli\LBComposerCheckBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-use LeoBenelli\LBComposerCheckBundle\App\ComposerLeo;
+use LeoBenelli\LBComposerCheckBundle\App\ComposerBundleRepository;
 
+/**
+ * @Route("/lb_composer_check_bundle")
+ * 
+ * @link http://localhost:8000/lb_composer_check_bundle/show_pkgs/ ComposerBundlesVersion
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/LB/")
+     * @Route("/show_pkgs/")
      */
-    public function indexAction()
+    public function showPackagesAction()
     {
+        /*
         ini_set('xdebug.var_display_max_depth', 5);
         ini_set('xdebug.var_display_max_children', 256);
         ini_set('xdebug.var_display_max_data', 100000);
+        */
+        $cbr= new ComposerBundleRepository();
 
-        $cl = new ComposerLeo();
+        // Recupero le informazioni via composer
+        $cbr->load();
 
-        $cl->load();
-
-        $installedPackages = $cl->getInstalledPackages();
-
-
-        
-//        var_dump($installedPackages);
-//        var_dump('test-controller');
-/*
-   // Metodo 1
-
-       $process = new Process('composer show -l --format json --working-dir=..');
-       $process->run();
-
-
-
-       // executes after the command finishes
-       if (!$process->isSuccessful()) {
-           echo $process->getErrorOutput();
-           throw new ProcessFailedException($process);
-       }
-        var_dump($process->getOutput());
-
-       // Metodo 2
-
-       $builder = new ProcessBuilder(array('composer', 'show -l --format json --working-dir=..'));
-       $builder->getProcess()->run();
-*/
-/* OKOKOK
-       // Metodo 3
-       $builder = new ProcessBuilder();
-       $builder->setPrefix('composer');
-//            ->setArguments(array('show', '--format json', '--working-dir=..'))
-       var_dump( $builder
-           ->setArguments(array('show', '-l', '--working-dir=..', '--format=json'))
-           ->getProcess()
-           ->getCommandLine() );
-
-       $process = $builder->getProcess();
-//       $process->run();
-
-$process->run(function ($type, $buffer) {
-    if (Process::ERR === $type) {
-        var_dump( 'ERR > '.$buffer);
-    } else {
-        var_dump( 'OUT > '.$buffer);
-    }
-});
-       var_dump( $process->getErrorOutput());
-
-       var_dump( $process->getOutput());
-
-*/
-       // return $this->render('LBComposerCheckBundle:Default:index.html.twig');
+        // Prendo i packages installati
+        $installedPackages = $cbr->getInstalledPackages();
         
         return $this->render('LBComposerCheckBundle:Default:index.html.twig', [
-//            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'packages' => $installedPackages,
         ]);
           

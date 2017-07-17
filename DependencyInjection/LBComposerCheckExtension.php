@@ -21,7 +21,7 @@ class LBComposerCheckExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-var_dump('testBundleManual -> LBComposerCheckBundle');
+        //var_dump('testBundleManual -> LBComposerCheckBundle');
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

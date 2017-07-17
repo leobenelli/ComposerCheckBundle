@@ -1,34 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  
-<table style="">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Installed Version</th>
-        <th>Available Version</th>
-        <th>Status</th>
-    </tr>
-    {% for package in packages %}
-        {% set color_class = "" %}
-        {% if package.latestStatus == "up-to-date" %}
-            {% set color_class = "package-updated" %}
-        {% elseif package.latestStatus == "semver-safe-update"%}
-            {% set color_class = "package-break" %}
-        {% elseif package.latestStatus == "update-possible"%}
-            {% set color_class = "package-updatable" %}
-        {%endif%}
 
-        <tr class="{{color_class}}">
-            <td>{{package.name}}</td>
-            <td>{{package.description}}</td>
-            <td>{{package.version}}</td>
-            <td>{{package.latest}}</td>
-            <td>{{package.latestStatus}}</td>
+    <center><h1>Composer Bundles Version</h1><center>
+    <table style="width:90%">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Installed Version</th>
+            <th>Available Version</th>
+            <th>Status</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for package in packages %}
+            {% set color_class = "" %}
+            {% if package.latestStatus == "up-to-date" %}
+                {% set color_class = "package-updated" %}
+            {% elseif package.latestStatus == "semver-safe-update"%}
+                {% set color_class = "package-break" %}
+            {% elseif package.latestStatus == "update-possible"%}
+                {% set color_class = "package-updatable" %}
+            {%endif%}
+
+            <tr class="{{color_class}}">
+                <td>{{package.name}}</td>
+                <td>{{package.description}}</td>
+                <td>{{package.version}}</td>
+                <td>{{package.latest}}</td>
+                <td>{{package.latestStatus}}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
 
 {% block stylesheets %}
