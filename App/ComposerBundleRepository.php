@@ -24,7 +24,6 @@ class ComposerBundleRepository {
        $builder->setPrefix('composer');
        $builder->setArguments(array('show', '-l' , '--format=json', '--working-dir=..'));
        $process = $builder->getProcess();
-/*
 
        $process->run();
 
@@ -36,24 +35,20 @@ class ComposerBundleRepository {
 
        // Scorro e riempio l'array dei package
        foreach ($packagesInstalled as $packageInstalled) {
-           $package = new ComposerPackage();
-           $package->setName($packageInstalled['name']);
-           $package->setVersion($packageInstalled['version']);
-           $package->setLatest($packageInstalled['latest']);
-           $package->setLatestStatus($packageInstalled['latest-status']);
-           $package->setDescription($packageInstalled['description']);
+           $package = ComposerPackage::createByArray($packageInstalled);
+
+//           $package = new ComposerPackage();
+//           $package->setName($packageInstalled['name']);
+//           $package->setVersion($packageInstalled['version']);
+//           $package->setLatest($packageInstalled['latest']);
+//           $package->setLatestStatus($packageInstalled['latest-status']);
+//           $package->setDescription($packageInstalled['description']);
 
            $this->packages[] = $package;
-       }
- *
- */
-            $package = new ComposerPackage();
-            $package->setName('package_name');
-            $package->setVersion('package_version');
-            $package->setLatest('package_latest');
-            $package->setLatestStatus('package_latest-status');
-            $package->setDescription('package_description');
-            $this->packages[] = $package;
+        }
+ 
+        //$package = ComposerPackage::createByPackageName('doctrine/orm');
+        
     }
     
     /**

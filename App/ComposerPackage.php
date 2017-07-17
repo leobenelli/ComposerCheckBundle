@@ -5,6 +5,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ProcessBuilder;
 
+
 /**
  * Oggetto Package 
  *
@@ -17,6 +18,42 @@ class ComposerPackage {
     private $latest;
     private $latestStatus;
     private $description;
+
+    public function __construct() {
+    }
+
+    public static function createByArray( $packageArray ) {
+        $instance = new self();
+
+        $instance->setName($packageArray['name']);
+        $instance->setVersion($packageArray['version']);
+        $instance->setLatest($packageArray['latest']);
+        $instance->setLatestStatus($packageArray['latest-status']);
+        $instance->setDescription($packageArray['description']);
+
+        return $instance;
+    }
+
+    public static function createByPackageName( $packageName ) {
+        $instance = new self();
+        $instance->setName($packageName);
+        $instance->setVersion('package_version');
+        $instance->setLatest('package_latest');
+        $instance->setLatestStatus('package_latest-status');
+        $instance->setDescription('package_description');
+
+        $builder = new ProcessBuilder();
+        $builder->setPrefix('composer');
+        $builder->setArguments(array('show', $packageName, '--working-dir=..'));
+        $process = $builder->getProcess();
+
+        $process->run();
+
+        $instance->setDescription(nl2br($process->getOutput()));
+
+
+        return $instance;
+    }
 
     public function setName($name) {
         $this->name = $name;
@@ -63,4 +100,5 @@ class ComposerPackage {
         return $this->description;
     }
 
+    
 }
