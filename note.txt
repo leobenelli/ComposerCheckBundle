@@ -20,7 +20,7 @@ Note Varie:
      */
     
 
-
+Per la sintassi del README di Github: https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
 DA FARE:
 

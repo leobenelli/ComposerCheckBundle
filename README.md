@@ -15,7 +15,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require leobenelli/composer-check-bundle (Still in develpment. It will be ready soon)
+$ composer require leobenelli/composer-check-bundle
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -48,4 +48,24 @@ class AppKernel extends Kernel
 
     // ...
 }
+```
+
+Step 3: Activate routing 
+-------------------------
+To enable the routing to ComposerCheckBundle it's necessary to activate route adding in **routing.yml**:
+```
+lb_composer_check:
+    resource: '@LBComposerCheckBundle/Controller/'
+    type: annotation
+```
+
+After that, you can show the Composer Bundles Version by the link http://<hostname>/lb_composer_check_bundle/show_pkgs 
+(example: http://localhost:8000/lb_composer_check_bundle/show_pkgs)
+
+Step 4: Add page link
+-------------------------
+Enabling the route on step 3, you can add the link of page in your application by the action name **leobenelli_lbcomposercheck_default_showpackages**
+Example:
+```
+<a href="{{path("leobenelli_lbcomposercheck_default_showpackages")}}" > Composer Check Bundles Version</a>
 ```
