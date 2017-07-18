@@ -22,6 +22,11 @@ Note Varie:
 
 Per la sintassi del README di Github: https://help.github.com/articles/basic-writing-and-formatting-syntax/
 Per la gestione delle versioni in composer.json: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
+    ^ non rompe la versione rispetto al primo elemento quindi ^0.2.1 parte da 0.2.1 fino a <1.0.0 e ^0.2 parte da 0.2.0 fino a <1.0.0
+    ~ rompe le versioni rispetto all'ultimo elemento es. ~0.3 prevede anche 0.3.1 ma anche 0.4.0 etc.. 0.6.0 ma si ferma a <1.0.0 mentre ~0.3.2 parte da 0.3.2 e si ferma a <0.4.0
+
+Test versioni Composer: https://semver.mwl.be/#?package=symfony%2Fsymfony&version=%5E2.7&minimum-stability=stable
+    
 
 DA FARE:
 
