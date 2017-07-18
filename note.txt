@@ -21,6 +21,7 @@ Note Varie:
     
 
 Per la sintassi del README di Github: https://help.github.com/articles/basic-writing-and-formatting-syntax/
+Per la gestione delle versioni in composer.json: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 
 DA FARE:
 
