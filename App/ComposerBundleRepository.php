@@ -24,6 +24,7 @@ class ComposerBundleRepository {
        $builder->setPrefix('composer');
        $builder->setArguments(array('show', '-l' , '--format=json', '--working-dir=..'));
        $process = $builder->getProcess();
+       $process->setTimeout(120); // Timeout a 120 secondi 
 
        $process->run();
 
