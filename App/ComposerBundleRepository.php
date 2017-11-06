@@ -21,12 +21,37 @@ class ComposerBundleRepository {
     public function load() {
 
        $builder = new ProcessBuilder();
+       // Un'alternativa potrebbe essere di leggere una variabile di ambiente impostata poi su httpd.conf: 
+       /*
+        * <Directory "/opt/rh/httpd24/root/var/www/html/crwD/web">
+        * Options All
+        *   AllowOverride All
+        *   Require all granted
+        *   Options Indexes FollowSymLinks
+        *   SetEnv LB_COMPOSER_HOME /tmp    <------
+        * </Directory>
+        */
+       //$builder->setEnv('COMPOSER_HOME', getenv('LB_COMPOSER_HOME') );
+
+       $builder->setEnv('COMPOSER_HOME', '..' );
+
        $builder->setPrefix('composer');
        $builder->setArguments(array('show', '-l' , '--format=json', '--working-dir=..'));
        $process = $builder->getProcess();
        $process->setTimeout(120); // Timeout a 120 secondi 
 
        $process->run();
+       
+       // TODO: Occorre gestire il caso di errore es. COMPOSER_HOME non settata che dava in produzione di apache
+       /*
+        $process->run(function ($type, $buffer) {
+            if (Process::ERR === $type) {
+                echo 'ERR > '.$buffer;
+            } else {
+                echo 'OUT > '.$buffer;
+            }
+        });
+        */
 
        // Trasformo il json di ritorno in Array
        $packagesFromJson = json_decode($process->getOutput(), true);
