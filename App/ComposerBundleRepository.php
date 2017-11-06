@@ -31,9 +31,9 @@ class ComposerBundleRepository {
         *   SetEnv LB_COMPOSER_HOME /tmp    <------
         * </Directory>
         */
-       //$builder->setEnv('COMPOSER_HOME', getenv('LB_COMPOSER_HOME') );
+       $builder->setEnv('COMPOSER_HOME', getenv('LB_COMPOSER_HOME') );
 
-       $builder->setEnv('COMPOSER_HOME', '..' );
+//       $builder->setEnv('COMPOSER_HOME', '..' );
 
        $builder->setPrefix('composer');
        $builder->setArguments(array('show', '-l' , '--format=json', '--working-dir=..'));
