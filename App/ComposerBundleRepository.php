@@ -31,7 +31,8 @@ class ComposerBundleRepository {
         *   SetEnv LB_COMPOSER_HOME /tmp    <------
         * </Directory>
         */
-       $builder->setEnv('COMPOSER_HOME', getenv('LB_COMPOSER_HOME') );
+       // Tolto tutto e scelta la strada di mettere la variabile globale per far funzionare composer_home
+       // $builder->setEnv('COMPOSER_HOME', getenv('LB_COMPOSER_HOME') );
 
 //       $builder->setEnv('COMPOSER_HOME', '..' );
 
