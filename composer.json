@@ -4,7 +4,7 @@
     "description": "Symfony Bundle to check Version alignment (via Composer) with the latest Bundle versions.",
     "keywords": ["composer","show","bundles","symfony"],
     "homepage": "https://github.com/leobenelli/ComposerCheckBundle",
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Leonardo Benelli",
