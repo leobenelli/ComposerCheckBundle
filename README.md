@@ -26,38 +26,28 @@ Step 2: Enable the Bundle
 -------------------------
 
 Then, enable the bundle by adding it to the list of registered bundles
-in the `app/AppKernel.php` file of your project:
+in the `config/bundles.php` file of your project:
 
 ```php
 <?php
-// app/AppKernel.php
 
-// ...
-class AppKernel extends Kernel
-{
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
+return [
+    ...
+    LeoBenelli\LBComposerCheckBundle\LBComposerCheckBundle::class => ['all' => true],
+    ...
+];
 
-            new LeoBenelli\LBComposerCheckBundle\LBComposerCheckBundle(),
-        );
-
-        // ...
-    }
-
-    // ...
-}
 ```
 
 Step 3: Activate routing 
 -------------------------
-To enable the routing to ComposerCheckBundle it's necessary to activate route adding in **routing.yml**:
+Add new file **"lb_composer_check.yaml"** in config folder 
 ```
 lb_composer_check:
     resource: '@LBComposerCheckBundle/Controller/'
     type: annotation
 ```
+
 
 After that, you can show the Composer Bundles Version by the link http://<hostname>/lb_composer_check_bundle/show_pkgs 
 (example: http://localhost:8000/lb_composer_check_bundle/show_pkgs)
