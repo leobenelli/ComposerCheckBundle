@@ -42,11 +42,16 @@ class ComposerPackage {
         $instance->setLatestStatus('package_latest-status');
         $instance->setDescription('package_description');
 
+        /*
+        Rimosso da Symfony 4 messo Process
+
         $builder = new ProcessBuilder();
         $builder->setPrefix('composer');
         $builder->setArguments(array('show', $packageName, '--working-dir=..'));
         $process = $builder->getProcess();
-
+        */
+        $process = new Process('composer show ' . $packageName . ' --working-dir=..');
+        
         $process->run();
 
         $instance->setDescription(nl2br($process->getOutput()));

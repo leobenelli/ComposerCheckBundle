@@ -20,7 +20,12 @@ class ComposerBundleRepository {
      */
     public function load() {
 
+      /*
+       Rimosso da Symfony 4 messo Process
+
        $builder = new ProcessBuilder();
+      */
+
        // Un'alternativa potrebbe essere di leggere una variabile di ambiente impostata poi su httpd.conf: 
        /*
         * <Directory "/opt/rh/httpd24/root/var/www/html/crwD/web">
@@ -36,11 +41,16 @@ class ComposerBundleRepository {
 
 //       $builder->setEnv('COMPOSER_HOME', '..' );
 
+       $process = new Process('composer show -l --format=json --working-dir=..');
+       $process->setTimeout(120);
+/*
+       Rimosso da Symfony 4 messo Process
+
        $builder->setPrefix('composer');
        $builder->setArguments(array('show', '-l' , '--format=json', '--working-dir=..'));
        $process = $builder->getProcess();
        $process->setTimeout(120); // Timeout a 120 secondi 
-
+*/
        $process->run();
        
        // TODO: Occorre gestire il caso di errore es. COMPOSER_HOME non settata che dava in produzione di apache
