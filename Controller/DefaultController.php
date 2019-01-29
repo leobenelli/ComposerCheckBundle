@@ -2,7 +2,7 @@
 
 namespace LeoBenelli\LBComposerCheckBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +15,7 @@ use LeoBenelli\LBComposerCheckBundle\App\ComposerBundleRepository;
  * 
  * @link http://localhost:8000/lb_composer_check_bundle/show_pkgs/ ComposerBundlesVersion
  */
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/show_pkgs", name="leobenelli_lbcomposercheck_default_showpackages")
